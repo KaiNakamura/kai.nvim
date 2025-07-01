@@ -1,4 +1,8 @@
-# kickstart.nvim
+# kai.nvim
+
+My personal Neovim configuration.
+
+Forked off of [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim).
 
 ## Introduction
 
