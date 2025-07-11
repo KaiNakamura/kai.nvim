@@ -16,11 +16,10 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
+-- [[ Movement ]]
 -- Create newlines like o and O but stay in normal mode
 vim.keymap.set('n', 'zj', 'o<Esc>k', { desc = 'Create newline below and stay in normal mode' })
 vim.keymap.set('n', 'zk', 'O<Esc>j', { desc = 'Create newline above and stay in normal mode' })
-
--- [[ Movement ]]
 
 -- Move cursor by display lines when line is wrapped
 vim.keymap.set('n', 'j', 'gj', { desc = 'Move down by display line' })
@@ -74,10 +73,16 @@ vim.keymap.set('n', '<M-8>', '8gt', { desc = 'Go to tab 8' })
 vim.keymap.set('n', '<M-9>', '9gt', { desc = 'Go to tab 9' })
 
 -- [[ File Explorer ]]
--- nvim-tree keymaps to replace netrw :E functionality
-vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>', { desc = 'Toggle file [E]xplorer' })
-vim.keymap.set('n', '<leader>E', ':NvimTreeFocus<CR>', { desc = 'Focus file [E]xplorer' })
-vim.keymap.set('n', '<leader>ef', ':NvimTreeFindFile<CR>', { desc = 'Find current file in [E]xplorer' })
+
+-- See `:help nvim-tree-mappings-default` for default keymaps
+
+-- Create :E command to focus tree (replaces netrw :E)
+vim.api.nvim_create_user_command('E', function()
+  vim.cmd('NvimTreeFocus')
+end, { desc = 'Focus file explorer tree' })
+
+-- <leader>e for sidebar tree focus
+vim.keymap.set('n', '<leader>e', ':NvimTreeFocus<CR>', { desc = 'Focus file [e]xplorer' })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
