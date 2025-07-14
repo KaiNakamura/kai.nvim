@@ -77,11 +77,14 @@ vim.keymap.set('n', '<M-9>', '9gt', { desc = 'Go to tab 9' })
 
 -- Create :E command to focus tree (replaces netrw :E)
 vim.api.nvim_create_user_command('E', function()
-  vim.cmd('NvimTreeFocus')
+  vim.cmd 'NvimTreeFocus'
 end, { desc = 'Focus file explorer tree' })
 
 -- <leader>e for sidebar tree focus
-vim.keymap.set('n', '<leader>e', ':NvimTreeFocus<CR>', { desc = 'Focus file [e]xplorer' })
+vim.keymap.set('n', '<leader>e', ':NvimTreeFocus<CR>', { desc = 'Focus [E]xplorer' })
+
+-- <leader>se for opening current file in tree
+vim.keymap.set('n', '<leader>se', ':NvimTreeFindFile<CR>', { desc = '[S]earch in [E]xplorer' })
 
 -- [[ Help Configuration ]]
 -- Open help in new tab instead of split
@@ -89,10 +92,10 @@ vim.api.nvim_create_autocmd('BufWinEnter', {
   pattern = { '*.txt' },
   callback = function()
     if vim.bo.filetype == 'help' then
-      vim.cmd('wincmd T')  -- Move current window to new tab
+      vim.cmd 'wincmd T' -- Move current window to new tab
     end
   end,
-  desc = 'Open help in new tab'
+  desc = 'Open help in new tab',
 })
 
 -- [[ Basic Autocommands ]]
