@@ -84,7 +84,7 @@ end, { desc = 'Focus file explorer tree' })
 vim.keymap.set('n', '<leader>e', ':NvimTreeFocus<CR>', { desc = 'Focus [E]xplorer' })
 
 -- <leader>se for opening current file in tree
-vim.keymap.set('n', '<leader>se', ':NvimTreeFindFile<CR>', { desc = '[S]earch in [E]xplorer' })
+vim.keymap.set('n', '<leader>se', ':NvimTreeFindFile<CR>', { desc = '[S]earch for current file in [E]xplorer' })
 
 -- [[ Help Configuration ]]
 -- Open help in new tab instead of split
