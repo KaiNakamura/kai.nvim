@@ -95,6 +95,19 @@ require('lazy').setup({
       }
     end,
   },
+
+  { -- Open Kitty scrollback buffer with Neovim
+    'mikesmithgh/kitty-scrollback.nvim',
+    enabled = true,
+    lazy = true,
+    cmd = { 'KittyScrollbackGenerateKittens', 'KittyScrollbackCheckHealth', 'KittyScrollbackGenerateCommandLineEditing' },
+    event = { 'User KittyScrollbackLaunch' },
+    version = '*',
+    config = function()
+      require('kitty-scrollback').setup()
+    end,
+  },
+
   -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
   --
   -- This is often very useful to both group configuration, as well as handle

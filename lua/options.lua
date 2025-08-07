@@ -72,7 +72,6 @@ vim.o.scrolloff = 5
 vim.o.confirm = true
 
 -- Lets cursor go one space past the end of the line
-vim.o.virtualedit = 'onemore'
+-- vim.o.virtualedit = 'onemore'
 
 -- vim: ts=2 sts=2 sw=2 et
-
