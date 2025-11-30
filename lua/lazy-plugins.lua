@@ -782,6 +782,36 @@ require('lazy').setup({
     --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
   },
 
+  { -- OpenCode AI coding agent integration
+    'sudo-tee/opencode.nvim',
+    config = function()
+      require('opencode').setup({
+        preferred_picker = 'telescope',
+        preferred_completion = 'blink',
+        default_global_keymaps = true,
+        default_mode = 'build',
+        keymap_prefix = '<leader>o',
+        keymap = {
+          editor = {
+            ['<leader>og'] = { 'toggle' },
+          },
+        },
+      })
+    end,
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      {
+        'MeanderingProgrammer/render-markdown.nvim',
+        opts = {
+          anti_conceal = { enabled = false },
+          file_types = { 'markdown', 'opencode_output' },
+        },
+        ft = { 'markdown', 'Avante', 'copilot-chat', 'opencode_output' },
+      },
+      'saghen/blink.cmp',
+    },
+  },
+
   -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
   -- place them in the correct locations.
