@@ -88,7 +88,7 @@ vim.keymap.set('n', '<leader>se', ':NvimTreeFindFile<CR>', { desc = '[S]earch fo
 
 -- [[ Markdown Preview ]]
 -- Toggle markdown preview
-vim.keymap.set('n', '<leader>mp', ':RenderMarkdown toggle<CR>', { desc = '[M]arkdown [P]review toggle' })
+vim.keymap.set('n', '<leader>md', ':RenderMarkdown toggle<CR>', { desc = '[M]ark[d]own preview toggle' })
 
 -- [[ Help Configuration ]]
 -- Open help in new tab instead of split
