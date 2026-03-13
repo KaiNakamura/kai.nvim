@@ -86,6 +86,32 @@ vim.keymap.set('n', '<leader>e', ':NvimTreeFocus<CR>', { desc = 'Focus [E]xplore
 -- <leader>se for opening current file in tree
 vim.keymap.set('n', '<leader>se', ':NvimTreeFindFile<CR>', { desc = '[S]earch for current file in [E]xplorer' })
 
+-- [[ URL Following ]]
+-- In markdown: use follow-md-links (handles markdown links, file paths, anchors, URLs)
+-- In other files: open URL under cursor via vim.ui.open
+local function follow_link()
+  if vim.bo.filetype == 'markdown' then
+    require('follow-md-links').follow_link()
+  else
+    local cfile = vim.fn.expand '<cfile>'
+    if cfile:match '^https?://' then
+      vim.ui.open(cfile)
+    else
+      vim.notify('No URL under cursor', vim.log.levels.WARN)
+    end
+  end
+end
+
+vim.keymap.set('n', '<C-.>', follow_link, { desc = 'Follow link under cursor' })
+vim.keymap.set('n', '<C-LeftMouse>', function()
+  local pos = vim.fn.getmousepos()
+  if pos.line > 0 then
+    vim.api.nvim_set_current_win(pos.winid)
+    vim.api.nvim_win_set_cursor(pos.winid, { pos.line, pos.column - 1 })
+  end
+  follow_link()
+end, { desc = 'Ctrl+Click to follow link' })
+
 -- [[ Markdown Preview ]]
 -- Toggle markdown preview
 vim.keymap.set('n', '<leader>md', ':RenderMarkdown toggle<CR>', { desc = '[M]ark[d]own preview toggle' })
