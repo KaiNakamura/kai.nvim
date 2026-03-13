@@ -783,6 +783,14 @@ require('lazy').setup({
     --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
   },
 
+  { -- Render markdown files in-buffer
+    'MeanderingProgrammer/render-markdown.nvim',
+    opts = {
+      enabled = true, -- toggle to change default render behavior
+    },
+    ft = { 'markdown' },
+  },
+
   -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
   -- place them in the correct locations.
