@@ -63,6 +63,18 @@ require('lazy').setup({
     },
   },
 
+  { -- Direction-aware window resize
+    'mrjones2014/smart-splits.nvim',
+    lazy = false,
+    build = './kitty/install-kittens.bash',
+    config = function()
+      require('smart-splits').setup {
+        ignored_filetypes = { 'NvimTree' },
+        default_amount = 2,
+      }
+    end,
+  },
+
   { -- File Explorer
     -- See `:help nvim-tree` for more information
     'nvim-tree/nvim-tree.lua',
@@ -92,6 +104,9 @@ require('lazy').setup({
         diagnostics = {
           enable = true,
           show_on_dirs = true,
+        },
+        update_focused_file = {
+          enable = true,
         },
       }
     end,

@@ -51,6 +51,12 @@ vim.keymap.set('n', '<C-o>', ':split<CR>', { desc = 'Open horizontal split' })
 -- Close window
 vim.keymap.set('n', '<C-q>', ':close<CR>', { desc = 'Close current window' })
 
+-- Resize windows
+vim.keymap.set('n', '<C-Left>',  function() require('smart-splits').resize_left() end,  { desc = 'Resize window left' })
+vim.keymap.set('n', '<C-Down>',  function() require('smart-splits').resize_down() end,  { desc = 'Resize window down' })
+vim.keymap.set('n', '<C-Up>',    function() require('smart-splits').resize_up() end,    { desc = 'Resize window up' })
+vim.keymap.set('n', '<C-Right>', function() require('smart-splits').resize_right() end, { desc = 'Resize window right' })
+
 -- Move between windows
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
