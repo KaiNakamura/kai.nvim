@@ -66,7 +66,12 @@ require('lazy').setup({
   { -- Direction-aware window resize
     'mrjones2014/smart-splits.nvim',
     lazy = false,
-    build = './kitty/install-kittens.bash',
+    -- mkdir keeps the build green on hosts without kitty installed (eg. Coder
+    -- workspaces, headless servers). Upstream install-kittens.bash unconditionally
+    -- copies three .py kittens into $XDG_CONFIG_HOME/kitty/ via `cp` and fails if
+    -- the dir is missing. Pre-creating it lets the cp's succeed; the kittens are
+    -- inert without a kitty terminal to load them.
+    build = 'mkdir -p "${XDG_CONFIG_HOME:-$HOME/.config}/kitty" && ./kitty/install-kittens.bash',
     config = function()
       require('smart-splits').setup {
         ignored_filetypes = { 'NvimTree' },
